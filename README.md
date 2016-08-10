@@ -1,109 +1,102 @@
-## Tiny Stay: an AirBnB clone for Tiny Homes
+# Tiny Stay: an AirBnB clone for Tiny Homes
 [Hosted live on heroku here!](http://tinystay.herokuapp.com/)
 
-![](app/assets/images/demo.gif)
+![](https://s3-us-west-2.amazonaws.com/project-screenshots/tinystay.jpg)
 
 
-This site was built by Ashwin Rao, Josh Washke and Patrick Hardy in the first week of module 3 at the Turing School of Software and Design. We adapted an existing tool-rental application to handle multitenancy and significantly extend features implemented. It was undertaken to solidify our understanding of Ruby on Rails, writing and implementing user stories, SQL design, search functionality, and hosting production-quality web apps on heroku. The site successfully integrates geocoder, gmaps4rails, jquery UI elements, bootstrap and AWS with paperclip.
+## Description
 
-## Project Description(per Turing School)
-Your Little Shop of Orders application was *almost* great, but it turns out that we need to *pivot* the business model.
+A team project practicing brownfield development by pivoting an E-commerce tool rental website into a multi tenancy Airbnb clone. Users can list homes for rent, and make reservations on other homes through a JQuery date picker which only displays dates a home is available.
 
-In this project, you'll build upon an existing implementation of Little Shop. You will transform your restaurant ordering site into a platform that handles multiple, simultaneous businesses. Each business will have their own name, unique URL pattern, items, orders, and administrators.
+The project was built by pivoting the tool rental site [Tool Chest](https://github.com/kamiboers/toolchest)
 
-The project requirements are listed below:
+## Clone down the project
 
-* [Learning Goals](#learning-goals)
-* [Teams](#teams)
-* [Setup](#setup)
-* [Workflow](#workflow)
-* [Technical Expectations](#technical-expectations)
-* [Pivots](#pivots)
-* [Base Data](#base-data)
-* [Evaluation](#evaluation)
+```
+git clone git@github.com:jwashke/the_pivot
+```
 
-## <a name="learning-goals"></a> Learning Goals
+cd into the project directory
 
-During this project, you'll learn about:
+```
+cd the_pivot
+```
 
-* Working with Multitenancy
-* Implementing JavaScript
-* Securing a Rails App
-* Sending Email
-* Creating Seed files
+bundle
 
-## <a name="teams"></a> Teams
+```
+bundle
+```
 
-The project will be completed by teams of three to four developers over the span of two weeks.
+## Run the app in development
+To run the app, follow the instructions above for cloning down the app.
 
-You will name a team leader that will:
+You'll need an AWS account with an S3 bucket.
 
-* Transform business requirements into user stories.
-* Work with the customer to establish team priorities.
-* Seek clarification from the customer when a user story is not clear.
-* Make sure that all the team members are on track and collaborating following a professional workflow.
+Use the figaro gem to create an application.yml file.
 
-Like all projects, individual team members are expected to:
+```
+bundle exec figaro install
+```
+Put these lines of code in that files
+```
+S3_BUCKET_NAME: put your bucket name here
+AWS_ACCESS_KEY_ID: put your access key id here
+AWS_SECRET_ACCESS_KEY: put your secret access key here
+```
 
-* Seek out features and responsibilities that are uncomfortable.
-* Support your teammates so that everyone can collaborate and contribute.
-* Follow a professional workflow when developing a feature.
+Setup the database
 
-## <a name="setup"></a> Setup
+```
+bundle exec rake db:create db:migrate db:seed
+```
 
-### Project Starting Point
+Start the server by running
 
-You'll build upon an existing code base assigned by the instructors. You need to work on adapting and improving this codebase, not building your own thing from scratch. This is sometimes called "brownfield" development, and you'll soon know why.
+```
+rails s
+```
 
-### Exploring the Little Shop App
+and visit the site at [http://localhost:3000](http://localhost:3000)
 
-As a group, dig into the code base and pay particular attention to:
+## Run the tests
 
-* Test coverage and quality
-* Architectural concerns
-* Components that are particularly strong or weak
-* General strengths and weaknesses
+To run the tests, follow the instructions above for cloning down the app.
 
-### Beginning The Pivot
+You'll need an AWS account with an S3 bucket.
 
-Once you've explored the base project, the team leader will:
+Use the figaro gem to create an application.yml file.
 
-* Create a new, blank repository on GitHub named `the_pivot`
-* Clone the Little Shop project that you'll be working with to your local machine
-* Go into that project directory and `git remote rm origin`
-* Add the new repository as a remote `git remote add origin git://new_repo_url`
-* Push the code `git push origin master`
-* Add the other team members as collaborators in Github
+```
+bundle exec figaro install
+```
+Put these lines of code in that files
+```
+S3_BUCKET_NAME: put your bucket name here
+AWS_ACCESS_KEY_ID: put your access key id here
+AWS_SECRET_ACCESS_KEY: put your secret access key here
+```
 
-Once the team leader has done this, the other team members can fork the new repo.
+Setup the database
 
-### Tagging the Start Point
+```
+bundle exec rake db:create db:migrate db:seed
+```
 
-We want to be able to easily compare the change between the start of the project and the end. For that purpose, create a tag in the repo and push it to GitHub:
+Run the tests by running
 
-* $ git tag -a little_shop_v1
-* $ git push --tags
+```
+rspec
+```
 
-### Restrictions & Outside Code
+## Production
 
-Your project should evolve, refactor, and clean up the code you inherit. This includes deleting redundant, broken, or obsolete code. However, you should **not** throw out the previous work wholesale.
+Visit the app on Heroku at [http://tinystay.herokuapp.com](http://tinystay.herokuapp.com/)
 
-Furthermore, there should be *no reduction in functionality* except when explicitly called for by new requirements.
+It may take about 30 seconds for the Heroku Dyno to spin up.
 
-### Project Management Tool
+## Contributors
 
-There are many popular project management tools out there. For this project we'll use a lightweight tool that wraps GitHub issues: [Waffle.io](https://waffle.io/)
-
-Setup a Waffle project for your new repo. Your team members and instructors should be added to the project so they can create, edit, and comment on issues.
-
-## <a name="workflow"></a> Workflow
-
-### Client Interaction
-
-You will meet with the client frequently to obtain his/her business needs and correct course. You will transform these requirements into user stories.
-
-A feature will not be considered complete until it is working on production. You must assume that your client doesn't have any programming experience. You will have to learn how to manage expectations.
-
-The stories as written and prioritized in your project management tool will be the authoritative project requirements. They may go against and likely go beyond the general requirements in this project description.
-
-As the stories clearly define the customer's expectations, your application needs to **exactly** follow the stories as they've been developed with your customer. A 95% implementation is wrong.
+[Joshua Washke](https://github.com/jwashke)
+[Ashwin Rao](https://github.com/theonlyrao)
+[Patrick Hardy](https://github.com/patrickwhardy)
