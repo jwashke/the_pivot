@@ -97,6 +97,6 @@ It may take about 30 seconds for the Heroku Dyno to spin up.
 
 ## Contributors
 
-[Joshua Washke](https://github.com/jwashke)
-[Ashwin Rao](https://github.com/theonlyrao)
-[Patrick Hardy](https://github.com/patrickwhardy)
+* [Joshua Washke](https://github.com/jwashke)
+* [Ashwin Rao](https://github.com/theonlyrao)
+* [Patrick Hardy](https://github.com/patrickwhardy)
